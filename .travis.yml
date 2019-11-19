@@ -16,5 +16,10 @@ after_success:
   - docker build -t aalmeida/multi-nginx ./nginx
   - docker build -t aalmeida/multi-server ./server
   - docker build -t aalmeida/multi-worker ./worker
-  # push to docker hub
+  # login to docker-hub
   - echo $DOCKER_PASSWORD | docker login -u "$DOCKER_ID" --password-stdin 
+  # push to docker hub
+  - docker push aalmeida/multi-client
+  - docker push aalmeida/multi-nginx
+  - docker push aalmeida/multi-server
+  - docker push aalmeida/multi-worker 
