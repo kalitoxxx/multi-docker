@@ -12,14 +12,14 @@ script:
 # - run my other project test
 
 after_success:
-  - docker build -t aalmeida88/multi-client ./client
-  - docker build -t aalmeida88/multi-nginx ./nginx
-  - docker build -t aalmeida88/multi-server ./server
-  - docker build -t aalmeida88/multi-worker ./worker
+  - docker build -t $DOCKER_ID/multi-client ./client
+  - docker build -t $DOCKER_ID/multi-nginx ./nginx
+  - docker build -t $DOCKER_ID/multi-server ./server
+  - docker build -t $DOCKER_ID/multi-worker ./worker
   # login to docker-hub
   - echo $DOCKER_PASSWORD | docker login -u "$DOCKER_ID" --password-stdin 
   # push to docker hub
-  - docker push aalmeida88/multi-client
-  - docker push aalmeida88/multi-nginx
-  - docker push aalmeida88/multi-server
-  - docker push aalmeida88/multi-worker 
+  - docker push $DOCKER_ID/multi-client
+  - docker push $DOCKER_ID/multi-nginx
+  - docker push $DOCKER_ID/multi-server
+  - docker push $DOCKER_ID/multi-worker 
