@@ -4,22 +4,22 @@ services:
   - docker
 
 before_install:
-  - docker build -t aalmeida/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t aalmeida88/react-test -f ./client/Dockerfile.dev ./client
 # - docker build myOtherProject...
 
 script:
-  - docker run -e CI=true aalmeida/react-test npm test
+  - docker run -e CI=true aalmeida88/react-test npm test
 # - run my other project test
 
 after_success:
-  - docker build -t aalmeida/multi-client ./client
-  - docker build -t aalmeida/multi-nginx ./nginx
-  - docker build -t aalmeida/multi-server ./server
-  - docker build -t aalmeida/multi-worker ./worker
+  - docker build -t aalmeida88/multi-client ./client
+  - docker build -t aalmeida88/multi-nginx ./nginx
+  - docker build -t aalmeida88/multi-server ./server
+  - docker build -t aalmeida88/multi-worker ./worker
   # login to docker-hub
   - echo $DOCKER_PASSWORD | docker login -u "$DOCKER_ID" --password-stdin 
   # push to docker hub
-  - docker push aalmeida/multi-client
-  - docker push aalmeida/multi-nginx
-  - docker push aalmeida/multi-server
-  - docker push aalmeida/multi-worker 
+  - docker push aalmeida88/multi-client
+  - docker push aalmeida88/multi-nginx
+  - docker push aalmeida88/multi-server
+  - docker push aalmeida88/multi-worker 
